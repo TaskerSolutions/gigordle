@@ -9,6 +9,13 @@ h1 {
   padding: 30px;
 }
 
+.score {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding-top: 20px;
+}
+
 
 
 .options {

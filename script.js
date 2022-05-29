@@ -10,6 +10,7 @@ let rightGuess = [];
 let currentRows = [];
 let guessedAnswers = [];
 let guessString = '';
+const scoreCard = document.querySelector('.score');
 const board = document.querySelector('.game-board');
 
 populateBoard();
@@ -220,28 +221,32 @@ function shadeLettersInCurrentRows() {
 
 function areGuessesCorrect() {
   for (n = 0; n < answers.length; n ++) {
+    // correct guess
     if (guessString === answers[n]) {
       guessedAnswers.push(answers[n]);
   
       // shade group to mark completed
       groups[n].style.backgroundColor = 'rgb(42 161 42 / 15%)';
+      // update score
+      scoreCard.innerHTML = `Score: ${guessedAnswers.length} / ${totalWords}`
     }
   }
   //console.log(guessedAnswers)
 
+  // all words correct - win game
   if (guessedAnswers.length == totalWords) {
     toastr.success("You guessed all the words right! Well done!");
     guessesRemaining = 0;
     return;
+
   } else {
     guessesRemaining -= 1;
-    
     // redefine rows for next guess
     defineCurrentRows();
-
     currentGuess = [];
     nextLetter = 0;
 
+    // no guesses remining - lose game
     if (guessesRemaining === 0) {
       toastr.error("You've run out of guesses! Game over!");
       toastr.info(`The right words were: "${answers}"`);

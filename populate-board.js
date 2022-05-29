@@ -40,4 +40,5 @@ function populateBoard() {
   generateDailyAnswers();
   defineCurrentRows();
   clearKeyboardShading();
+  scoreCard.innerHTML = `Score: ${guessedAnswers.length} / ${totalWords}`
 }

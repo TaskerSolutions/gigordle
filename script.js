@@ -16,7 +16,7 @@ populateBoard();
 
 
 // generate answers
-function generateAnswers() {
+function generateRandomAnswers() {
   answers = [];
   for (i = 0; i < totalWords; i++) {
     // create array of answers
@@ -25,6 +25,30 @@ function generateAnswers() {
     rightGuess[i] = Array.from(answers[i]);
   }
   //console.log(answers)
+}
+
+
+// Generate a set of answers that are the same for everyone on a given day
+function generateDailyAnswers() {
+  // get current day of the year
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var diff = now - start;
+  var oneDay = 1000 * 60 * 60 * 24;
+  var day = Math.floor(diff / oneDay);
+  //console.log('Day of year: ' + day);
+
+  answers = [];
+
+  for (i = 0; i < totalWords; i++) {
+    let answer = day + ( i + 1 ) * totalWords;
+    if (answer >= WORDS.length) answer = day + i;
+    // create array of answers
+    answers[i] = WORDS[answer];
+    // create letter array of each answer
+    rightGuess[i] = Array.from(answers[i]);
+  }
+  console.log(answers)
 }
 
 

@@ -37,7 +37,7 @@ function populateBoard() {
     }
   }
 
-  generateAnswers();
+  generateDailyAnswers();
   defineCurrentRows();
   clearKeyboardShading();
 }

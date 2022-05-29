@@ -1,5 +1,5 @@
-let totalWords = 16; // set number of words to guess.
-let totalGuesses = 21; // set number of guesses.
+let totalWords = 1; // set number of words to guess.
+let totalGuesses = 14; // set number of guesses.
 let totalLetters = 5; // set number of letters per word.
 let guessesRemaining = totalGuesses;
 let currentGuess = [];
@@ -158,8 +158,8 @@ function shadeLettersInCurrentRows() {
       // reset array
       for (let p = 0; p < 5; p++) {
         remainingLettersInWord[p] = rightGuess[n][p];
-        //console.log(remainingLettersInWord[p])
       }
+      //console.log(remainingLettersInWord)
 
       // loop for total number of letters per answer
       for (let i = 0; i < totalLetters; i++) {
@@ -170,22 +170,27 @@ function shadeLettersInCurrentRows() {
 
         // check if letter is a part of the word and remove it from remaining letters if so.
         for (let o = 0; o < 5; o++) {
-          if (letter === rightGuess[n][i]) {
+          console.log(letter, rightGuess[n][o])
+          if (letter == rightGuess[n][i]) {
             remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
             letterColor = 'green';
+            //console.log(letter + " go green")
+            //console.log(remainingLettersInWord)
             break;
           } else {
             letterColor = 'grey';
           }
-        }
+        } 
+        console.log(remainingLettersInWord)
 
         // check if current letter features in letters remaining
         for (let o = 0; o < 5; o++) {
           if (
-            remainingLettersInWord.includes(letter) &&
+            remainingLettersInWord[o] == letter &&
             letter !== rightGuess[n][i]
           ) {
             remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
+            //console.log(letter + " go orange")
             letterColor = 'orange';
           }
         }

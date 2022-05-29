@@ -153,7 +153,7 @@ function shadeLettersInCurrentRows() {
   // loop for total number of answers
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (guessedAnswers[n] != answers[n]) {
+    if (answers.includes(guessedAnswers[n])) {
 
       let remainingLettersInWord = [];
       // reset array
@@ -226,7 +226,7 @@ function areGuessesCorrect() {
       guessedAnswers.push(answers[n]);
   
       // shade group to mark completed
-      groups[n].style.backgroundColor = 'rgb(42 161 42 / 15%)';
+      groups[n].style.backgroundColor = 'rgb(42 161 42 / 25%)';
       // update score
       scoreCard.innerHTML = `Score: ${guessedAnswers.length} / ${totalWords}`
     }

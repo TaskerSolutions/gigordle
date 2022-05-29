@@ -3,7 +3,8 @@ function populateBoard() {
   totalWords = document.getElementById('words-select').value;
   totalGuesses = document.getElementById('guesses-select').value;
   guessesRemaining = totalGuesses;
-  nextLetter = 0;
+  nextLetter = 0; 
+  guessedAnswers = [];
 
   // delete old game board
   board.innerHTML = '';
@@ -40,5 +41,6 @@ function populateBoard() {
   generateDailyAnswers();
   defineCurrentRows();
   clearKeyboardShading();
+
   scoreCard.innerHTML = `Score: ${guessedAnswers.length} / ${totalWords}`
 }

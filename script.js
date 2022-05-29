@@ -1,4 +1,4 @@
-let totalWords = 1; // set number of words to guess.
+let totalWords = 10; // set number of words to guess.
 let totalGuesses = 14; // set number of guesses.
 let totalLetters = 5; // set number of letters per word.
 let guessesRemaining = totalGuesses;

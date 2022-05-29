@@ -39,4 +39,5 @@ function populateBoard() {
 
   generateAnswers();
   defineCurrentRows();
+  clearKeyboardShading();
 }

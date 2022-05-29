@@ -107,6 +107,13 @@ function shadeKeyBoard(letter, color) {
   }
 }
 
+// clear the shading on the on screen keyboard
+function clearKeyboardShading() {
+  for (const elem of document.getElementsByClassName("keyboard-button")) {
+    elem.style.backgroundColor = '';
+  }
+}
+
 
 // Shade the letters in the current row for correct letters, wrong place letters & incorrect letters
 function shadeLettersInCurrentRows() {

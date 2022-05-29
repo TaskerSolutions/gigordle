@@ -64,7 +64,7 @@ function defineCurrentRows() {
 // insert letter on keypress
 function insertLetter (pressedKey) {
   if (nextLetter === totalLetters) return;
-  pressedKey = pressedKey.toLowerCase();
+  pressedKey = pressedKey.toUpperCase();
 
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
@@ -74,7 +74,8 @@ function insertLetter (pressedKey) {
       box.classList.add("filled-box");
     }
   }
-  currentGuess.push(pressedKey);
+  lowerCase = pressedKey.toLowerCase();
+  currentGuess.push(lowerCase);
   nextLetter += 1;
 }
 
@@ -125,7 +126,6 @@ function shadeKeyBoard(letter, color) {
 
       if (color === 'green' || color === 'orange') color = 'rgb(244, 230, 188)';
       let oldColor = elem.style.backgroundColor;
-      console.log(oldColor)
       if (oldColor === 'rgb(244, 230, 188)') return;
 
       /*let oldColor = elem.style.backgroundColor;
@@ -153,6 +153,14 @@ function shadeLettersInCurrentRows() {
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
     if (guessedAnswers[n] != answers[n]) {
+
+      let remainingLettersInWord = [];
+      // reset array
+      for (let p = 0; p < 5; p++) {
+        remainingLettersInWord[p] = rightGuess[n][p];
+        //console.log(remainingLettersInWord[p])
+      }
+
       // loop for total number of letters per answer
       for (let i = 0; i < totalLetters; i++) {
         let letterColor = '';
@@ -160,17 +168,44 @@ function shadeLettersInCurrentRows() {
         let letter = currentGuess[i];
         let letterPosition = rightGuess[n].indexOf(letter);
 
-      // define colors to shade
+        // check if letter is a part of the word and remove it from remaining letters if so.
+        for (let o = 0; o < 5; o++) {
+          if (letter === rightGuess[n][i]) {
+            remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
+            letterColor = 'green';
+            break;
+          } else {
+            letterColor = 'grey';
+          }
+        }
+
+        // check if current letter features in letters remaining
+        for (let o = 0; o < 5; o++) {
+          if (
+            remainingLettersInWord.includes(letter) &&
+            letter !== rightGuess[n][i]
+          ) {
+            remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
+            letterColor = 'orange';
+          }
+        }
+
+        //console.log(remainingLettersInWord)
+        //console.log(letterColor)
+
+        /* define colors to shade
         if (letterPosition === -1) {
           letterColor = 'grey';
         } else {
           if (currentGuess[i] === rightGuess[n][i]) {
             letterColor = 'green';
-          } else {
+          } else if ( ) {
             letterColor = 'orange';
+          } else {
+            letterColor = 'grey';
           }
           //rightGuess[n][letterPosition] = "#";
-        }
+        }*/
 
         // begin shading with delay between each letter
         let delay = 150 * i;
@@ -186,7 +221,7 @@ function shadeLettersInCurrentRows() {
 function areGuessesCorrect() {
   for (n = 0; n < answers.length; n ++) {
     if (guessString === answers[n]) {
-      guessedAnswers[n] = answers[n];
+      guessedAnswers.push(answers[n]);
   
       // shade group to mark completed
       groups[n].style.backgroundColor = 'rgb(42 161 42 / 15%)';

@@ -122,9 +122,15 @@ function checkGuess () {
 function shadeKeyBoard(letter, color) {
   for (const elem of document.getElementsByClassName("keyboard-button")) {
     if (elem.textContent === letter) {
+
+      if (color === 'green' || color === 'orange') color = 'rgb(244, 230, 188)';
       let oldColor = elem.style.backgroundColor;
+      console.log(oldColor)
+      if (oldColor === 'rgb(244, 230, 188)') return;
+
+      /*let oldColor = elem.style.backgroundColor;
       if (oldColor === 'green') return; 
-      if (oldColor === 'yellow' && color !== 'green') return;
+      if (oldColor === 'orange' && color !== 'green') return;*/
       elem.style.backgroundColor = color;
       break;
     }
@@ -141,7 +147,6 @@ function clearKeyboardShading() {
 
 // Shade the letters in the current row for correct letters, wrong place letters & incorrect letters
 function shadeLettersInCurrentRows() {
-  let x = 0;
   //console.log(currentGuess)
 
   // loop for total number of answers
@@ -171,10 +176,9 @@ function shadeLettersInCurrentRows() {
         let delay = 150 * i;
         setTimeout(()=> {
           box.style.backgroundColor = letterColor;
-          //shadeKeyBoard(letter, letterColor);
+          shadeKeyBoard(letter, letterColor);
         }, delay);
       }
-      x ++;
     }
   }
 }

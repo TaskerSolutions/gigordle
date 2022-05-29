@@ -36,3 +36,6 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
   document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}));
 
 });
+
+
+document.getElementById('reload-button').addEventListener('click', populateBoard);

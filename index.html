@@ -18,6 +18,20 @@
   
     <h1>Gigordle</h1>
 
+    <div class="row options">
+      <div class="col-md-4">
+        <label for="words-select">Words:</label>
+        <input type="number" id="words-select" name="words-select" min="1" max="100" value="16">
+      </div>
+      <div class="col-md-4">
+        <label for="guesses-select">Guesses:</label>
+        <input type="number" id="guesses-select" name="guesses-select" min="1" max="100" value="21">
+      </div>
+      <div class="col-md-4">
+        <div id="reload-button">Reload board</div>
+      </div>
+    </div>
+
     <div class="row game-board"></div> <!-- end row -->
 
     <div class="keyboard-fixed">

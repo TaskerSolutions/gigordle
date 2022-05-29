@@ -6,12 +6,50 @@ body {
 
 h1 {
   text-align: center;
-  padding: 50px;
+  padding: 30px;
 }
+
+
+
+.options {
+  margin: 0px 100px;
+  border: 1px solid black
+}
+
+.options .col-md-4 {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  padding-right: 15px;
+  margin-bottom: 0px;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+#reload-button {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: burlywood;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.reload-button:hover {
+  transform: scale(1.1);
+}
+
+
+
 
 .game-board {
   overflow: scroll;
-  padding: 0px 50px;
+  padding: 50px 50px;
   padding-bottom: 200px;
 }
 

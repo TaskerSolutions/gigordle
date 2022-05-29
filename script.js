@@ -69,7 +69,7 @@ function insertLetter (pressedKey) {
 
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (!answers.includes(guessedAnswers[n])) {
+    if (!guessedAnswers.includes(answers[n])) {
       let box = currentRows[n].children[nextLetter];
       box.textContent = pressedKey;
       box.classList.add("filled-box");
@@ -153,7 +153,7 @@ function shadeLettersInCurrentRows() {
   // loop for total number of answers
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (!answers.includes(guessedAnswers[n])) {
+    if (!guessedAnswers.includes(answers[n])) {
       let remainingLettersInWord = [];
       // reset array
       for (let p = 0; p < 5; p++) {

@@ -69,7 +69,7 @@ function insertLetter (pressedKey) {
 
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (guessedAnswers[n] !== answers[n]) {
+    if (!answers.includes(guessedAnswers[n])) {
       let box = currentRows[n].children[nextLetter];
       box.textContent = pressedKey;
       box.classList.add("filled-box");
@@ -153,67 +153,67 @@ function shadeLettersInCurrentRows() {
   // loop for total number of answers
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (answers.includes(guessedAnswers[n])) return;
-
-    let remainingLettersInWord = [];
-    // reset array
-    for (let p = 0; p < 5; p++) {
-      remainingLettersInWord[p] = rightGuess[n][p];
-      //console.log(remainingLettersInWord[p])
-    }
-
-    // loop for total number of letters per answer
-    for (let i = 0; i < totalLetters; i++) {
-      let letterColor = '';
-      let box = currentRows[n].children[i];
-      let letter = currentGuess[i];
-      let letterPosition = rightGuess[n].indexOf(letter);
-
-      // check if letter is a part of the word and remove it from remaining letters if so.
-      for (let o = 0; o < 5; o++) {
-        if (letter === rightGuess[n][i]) {
-          remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
-          letterColor = 'green';
-          break;
-        } else {
-          letterColor = 'grey';
-        }
+    if (!answers.includes(guessedAnswers[n])) {
+      let remainingLettersInWord = [];
+      // reset array
+      for (let p = 0; p < 5; p++) {
+        remainingLettersInWord[p] = rightGuess[n][p];
+        //console.log(remainingLettersInWord[p])
       }
 
-      // check if current letter features in letters remaining
-      for (let o = 0; o < 5; o++) {
-        if (
-          remainingLettersInWord.includes(letter) &&
-          letter !== rightGuess[n][i]
-        ) {
-          remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
-          letterColor = 'orange';
+      // loop for total number of letters per answer
+      for (let i = 0; i < totalLetters; i++) {
+        let letterColor = '';
+        let box = currentRows[n].children[i];
+        let letter = currentGuess[i];
+        let letterPosition = rightGuess[n].indexOf(letter);
+
+        // check if letter is a part of the word and remove it from remaining letters if so.
+        for (let o = 0; o < 5; o++) {
+          if (letter === rightGuess[n][i]) {
+            remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
+            letterColor = 'green';
+            break;
+          } else {
+            letterColor = 'grey';
+          }
         }
-      }
 
-      //console.log(remainingLettersInWord)
-      //console.log(letterColor)
+        // check if current letter features in letters remaining
+        for (let o = 0; o < 5; o++) {
+          if (
+            remainingLettersInWord.includes(letter) &&
+            letter !== rightGuess[n][i]
+          ) {
+            remainingLettersInWord[remainingLettersInWord.indexOf(letter)] = '';
+            letterColor = 'orange';
+          }
+        }
 
-      /* define colors to shade
-      if (letterPosition === -1) {
-        letterColor = 'grey';
-      } else {
-        if (currentGuess[i] === rightGuess[n][i]) {
-          letterColor = 'green';
-        } else if ( ) {
-          letterColor = 'orange';
-        } else {
+        //console.log(remainingLettersInWord)
+        //console.log(letterColor)
+
+        /* define colors to shade
+        if (letterPosition === -1) {
           letterColor = 'grey';
-        }
-        //rightGuess[n][letterPosition] = "#";
-      }*/
+        } else {
+          if (currentGuess[i] === rightGuess[n][i]) {
+            letterColor = 'green';
+          } else if ( ) {
+            letterColor = 'orange';
+          } else {
+            letterColor = 'grey';
+          }
+          //rightGuess[n][letterPosition] = "#";
+        }*/
 
-      // begin shading with delay between each letter
-      let delay = 150 * i;
-      setTimeout(()=> {
-        box.style.backgroundColor = letterColor;
-        shadeKeyBoard(letter, letterColor);
-      }, delay);
+        // begin shading with delay between each letter
+        let delay = 150 * i;
+        setTimeout(()=> {
+          box.style.backgroundColor = letterColor;
+          shadeKeyBoard(letter, letterColor);
+        }, delay);
+      }
     }
   }
 }

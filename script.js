@@ -9,7 +9,7 @@ let groups = document.querySelectorAll('.word-group');
 let rightGuess = [];
 let currentRows = [];
 let guessedAnswers = [];
-let guessString = '';
+let guessString = '';6
 const scoreCard = document.querySelector('.score');
 const board = document.querySelector('.game-board');
 
@@ -69,7 +69,7 @@ function insertLetter (pressedKey) {
 
   for (n = 0; n < answers.length; n ++) {
     // run only if answer is not already guessed
-    if (guessedAnswers[n] != answers[n]) {
+    if (guessedAnswers[n] !== answers[n]) {
       let box = currentRows[n].children[nextLetter];
       box.textContent = pressedKey;
       box.classList.add("filled-box");

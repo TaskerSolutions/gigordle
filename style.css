@@ -55,8 +55,8 @@ label {
 
 
 .game-board {
-  overflow: scroll;
-  padding: 50px 50px;
+  /*overflow: scroll;*/
+  padding: 5vh 8vw;
   padding-bottom: 200px;
 }
 
@@ -64,7 +64,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 60px;
-  max-height: 360px;
+  max-height: 38vh;
   overflow-y: scroll;
 }
 
@@ -76,8 +76,10 @@ label {
 }
 
 .letter {
-  min-width: 40px;
-  min-height: 40px;
+  width: 4vh;
+  height: 4vh;
+  max-width: 40px;
+  max-height: 40px;
   /*border: 1px solid black;*/
   padding: 3px;
   margin: 3px;
@@ -96,23 +98,24 @@ label {
 
 .keyboard-fixed {
   position: fixed;
-  bottom: -15px;
+  bottom: 0px;
   left: 0px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
 }
 
 #keyboard-cont {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+  /* background: #FFFFFF80;
+  width: 100%;
+  border-top: 1px solid black;
+  border-radius: 10px;*/
   box-shadow: 1px;
 }
 
@@ -126,11 +129,28 @@ label {
 
 .keyboard-button {
   font-weight: 700;
-  padding: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.8vh 1.3vh;
   margin: 0 2px;
   cursor: pointer;
   text-transform: uppercase;
   border-radius: 5px;
   min-width: 30px;
   min-height: 20px;
+}
+
+.key-row {
+  margin: 2px;
+}
+
+@media screen and (max-width: 480px) {
+  .keyboard-button {
+    font-size: 0.8rem;
+  }
+
+  .keyboard-fixed {
+
+  }
+
+  
 }

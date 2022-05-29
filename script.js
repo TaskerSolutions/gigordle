@@ -24,7 +24,7 @@ function generateAnswers() {
     // create letter array of each answer
     rightGuess[i] = Array.from(answers[i]);
   }
-  console.log(answers)
+  //console.log(answers)
 }
 
 
@@ -117,6 +117,7 @@ function clearKeyboardShading() {
 
 // Shade the letters in the current row for correct letters, wrong place letters & incorrect letters
 function shadeLettersInCurrentRows() {
+  let x = 0;
   //console.log(currentGuess)
 
   // loop for total number of answers
@@ -146,9 +147,10 @@ function shadeLettersInCurrentRows() {
         let delay = 150 * i;
         setTimeout(()=> {
           box.style.backgroundColor = letterColor;
-          shadeKeyBoard(letter, letterColor);
+          //shadeKeyBoard(letter, letterColor);
         }, delay);
       }
+      x ++;
     }
   }
 }

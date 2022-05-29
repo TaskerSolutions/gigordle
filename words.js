@@ -1,4 +1,5 @@
 const WORDS = [
+    'hahei',
     'which',
     'there',
     'their',
